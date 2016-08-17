@@ -1,0 +1,96 @@
+html {
+    height: 100%;
+}
+body {
+    display: block;
+    
+    background-image: url("./Images/whitewash-wood.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+   
+}
+
+.navbar-default{
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+    background-color: white;
+}
+
+.navbar-default .navbar-header > a:hover{
+    background-color:white;
+}
+.frame {
+    height: 25vw;      
+    width: 25vw;
+    border: 3px solid black;
+    white-space: nowrap;
+    margin: 1em;
+    text-align: center;
+    min-height: 17em;
+    min-width: 17em;
+    background-color:white;
+    
+    
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.frame img {
+    
+    vertical-align: middle;
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.navbar{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+.nav a{
+    color: black;
+    font-family: "Century Gothic";
+}
+
+.icon-bar {
+    background-color: black;
+}
+
+.navbar-brand{
+    color: black;
+    font-family: "Century Gothic";
+}
+
+.cframe{
+    height: 100vh;
+    background-color: black;
+}
+
+.calandar{
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    min-width: 800px;
+}
+
+p{
+    color: black;
+    font-family: "Century Gothic";
+}
+
+form{
+    margin-left: 10%;
+}
+
+.sbutton{
+    font-family: "Century Gothic";
+    background-color:black;
+    color: White;
+}
