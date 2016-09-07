@@ -85,7 +85,20 @@ var cNums = [];
 
 var squares = [];
 
+var scoreText = "Score: "
+
+var score;
+
 function initAll(){
+    score = 0;
+    
+    initGameboard();
+    setScore(0);
+    initFormula();
+    
+}
+
+function initGameboard(){
     for (var j=0; j<nums.length; j++){
         cNums.push(nums[j]);
     }
@@ -97,15 +110,16 @@ function initAll(){
         document.getElementById(currSquare).innerHTML = nums[n].name;
         squares.push(nums[n]);
         
-        //clear spaces of color
-        document.getElementById(currSquare).className="";
-        document.getElementById(currSquare).onmousedown = checkCorrect(currSquare); 
         nums.splice(n, 1);
     }
-    
-    console.log(cNums.length);
 }
 
-function checkCorrect(currSquare){
-    
+function setScore(points){
+    score += points;
+    document.getElementById("score").innerHTML = scoreText + score;
+}
+
+function checkCorrect(j){
+        console.log(squares[j].name);
+        
 }
