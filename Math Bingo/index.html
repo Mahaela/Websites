@@ -31,7 +31,11 @@
 					countdown: true,
                     callbacks: {
                         stop: function() {
-		        		    $('.message').html('The clock has stopped!');
+                            setFormula();
+                            setScore(-3);
+		        		    clock.setTime(10);
+                            clock.setCountdown(true);
+                            clock.start();
 		        	    }
                     }
 				});

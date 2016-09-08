@@ -87,22 +87,26 @@ var squares = [];
 
 var scoreText = "Score: "
 
-var score;
+var score = "";
+
+var currFormPos;
 
 function initAll(){
     score = 0;
     
-    initGameboard();
-    setScore(0);
-    initFormula();
-    
-}
-
-function initGameboard(){
     for (var j=0; j<nums.length; j++){
         cNums.push(nums[j]);
     }
     
+    initGameboard();
+    setScore(0);
+    setFormula();
+    
+     
+}
+
+function initGameboard(){
+   
     for (var i=0; i<24; i++){
         //set numbers
         var currSquare = "square" + i;
@@ -116,10 +120,23 @@ function initGameboard(){
 
 function setScore(points){
     score += points;
+    if(score < 0){
+        score = 0;
+    }
     document.getElementById("score").innerHTML = scoreText + score;
 }
 
-function checkCorrect(j){
-        console.log(squares[j].name);
+function setFormula(){
+    currFormPos = Math.floor(Math.random() * cNums.length);
+    var j = Math.floor(Math.random() * cNums[currFormPos].equations.length);
+    var currForm = cNums[currFormPos].equations[j]; 
+    document.getElementById("formula").innerHTML = currForm;    
+    
+}
+
+function checkCorrect(pos){
+        if(squares[pos].name == cNums[currFormPos].name){
+            setScore(10);
+        }
         
 }
