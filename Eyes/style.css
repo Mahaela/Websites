@@ -1,0 +1,19 @@
+.outerEye{
+ 	width: 5px;
+	height: 5px;
+	border: solid black;
+	border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    
+}
+
+.innerEye{
+    width: 1px;
+    height: 1px;
+    border: solid black;
+    border-radius: 50px;
+    background: black;
+    position:absolute;
+}
+

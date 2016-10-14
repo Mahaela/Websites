@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Math Bingo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <script type ="text/javascript" src="mathBingo.js"></script>
+</head>
+<body>
+<div>
+    <h1>Math Bingo</h1>
+    <p id="score">&nbsp;</p>
+    <div class="row">
+        <div class="col-sm-4">
+           <div id="clockWrapper">
+               <div class="clock"></div>
+            </div>  
+        </div>  
+        <div class="col-sm-4">
+            <div id="wrapper">
+            <table>
+                <tr>
+                    <th width="20%">B</th>
+                    <th width="20%">I</th>
+                    <th width="20%">N</th>
+                    <th width="20%">G</th>
+                    <th width="20%">O</th>
+                </tr>
+                <tr>
+                    <td id="square0" onclick="checkCorrect('0')">&nbsp;</td>
+                    <td id="square1" onclick="checkCorrect('1')">&nbsp;</td>
+                    <td id="square2" onclick="checkCorrect('2')">&nbsp;</td>
+                    <td id="square3" onclick="checkCorrect('3')">&nbsp;</td>
+                    <td id="square4" onclick="checkCorrect('4')">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td id="square5" onclick="checkCorrect('5')">&nbsp;</td>
+                    <td id="square6" onclick="checkCorrect('6')">&nbsp;</td>
+                    <td id="square7" onclick="checkCorrect('7')">&nbsp;</td>
+                    <td id="square8" onclick="checkCorrect('8')">&nbsp;</td>
+                    <td id="square9" onclick="checkCorrect('9')">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td id="square10" onclick="checkCorrect('10')">&nbsp;</td>
+                    <td id="square11" onclick="checkCorrect('11')">&nbsp;</td>
+                    <td id="free">FREE</td>
+                    <td id="square12" onclick="checkCorrect('12')">&nbsp;</td>
+                    <td id="square13" onclick="checkCorrect('13')">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td id="square14" onclick="checkCorrect('14')">&nbsp;</td>
+                    <td id="square15" onclick="checkCorrect('15')">&nbsp;</td>
+                    <td id="square16" onclick="checkCorrect('16')">&nbsp;</td>
+                    <td id="square17" onclick="checkCorrect('17')">&nbsp;</td>
+                    <td id="square18" onclick="checkCorrect('18')">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td id="square19" onclick="checkCorrect('19')">&nbsp;</td>
+                    <td id="square20" onclick="checkCorrect('20')">&nbsp;</td>
+                    <td id="square21" onclick="checkCorrect('21')">&nbsp;</td>
+                    <td id="square22" onclick="checkCorrect('22')">&nbsp;</td>
+                    <td id="square23" onclick="checkCorrect('23')">&nbsp;</td>
+                </tr>
+                </table>
+            </div>
+            </div>
+            <div class="col-sm-4">
+                <p id="formula">&nbsp;</p>
+            </div>
+        </div>
+        <p><a href ="index.html" id="reload">Click Here</a> to create a new card</p>
+    </div>
+</body>
+</html>

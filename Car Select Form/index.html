@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2 align="center">Car Picker</h2>
+<form action="#">
+    <p><label for="emailAddr">Email Address:
+        <input id="emailAddr" type="text" size="30" class="reqd email" />
+        </label></p>
+    <p><label for="color">Color:
+        <select id="color" class="reqd">
+            <option value="" selected="selected">Choose a color</option>
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+        </select>
+        </label></p>
+    <p>Options:
+        <label for="sunroof"><input type="checkbox" id="sunroof" value="Yes" />Sunroof (Two door only)</label>
+        <label for="pWindows"><input type="checkbox" id="pWindows" value = "Yes" />Power Windows</label>
+    </p>
+    <p><label for="DoorCt">Doors:&nbsp;&nbsp;
+        <input type="radio" id="twoDoor" name="DoorCt" value="twoDoor" class="radio" />Two
+        <input type="radio" id="fourDoor" name="DoorCt" value="fourDoor" class="radio" />Four
+    </label></p>
+     <p><label for="location">Enter your zip code or pick the dealer nearest you:<br/><br/>
+        <input type="radio" id="zipRadio" name="location" value="zip" class="radio" />
+         Zip: <input id="zip" type="text" size="5" maxlength="5" class="isZip dealerList" /><br/><br/>
+        <input type="radio" id="dealerListRadio" name="location" value="dealerList" class="radio" />
+            <select id="dealerList" size="4" class="zip">
+                <option value="California--Lemon Grove">California--Lemon Grove</option>
+                <option value="California--Lomita">California--Lomita</option>
+                <option value="California--Long Beach">California--Los Alamitos</option>
+                <option value="California--Los Angeles">California--Los Angeles</option>
+            </select>
+    </label></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>    
+<script type="text/javascript" src="formHandeling.js"></script>
+</body>
+</html>
