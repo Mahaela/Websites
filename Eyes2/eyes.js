@@ -6,7 +6,7 @@ var eyesCenterY=0;
 var leftEye;
 var rightEye;
 var xDormant= true;
-var lerpSpeed = 0.05;
+var lerpSpeed = 0.0001;
 var eyeSize = 6;
 var xOffset = 0;
 var xPos;
@@ -30,8 +30,7 @@ function init(){
 
 function getEvt(evt){
     if(!xOffset){
-        window.requestAnimationFrame(moveEyes);
-        xOffset = 1;
+        
     }
     if (!evt){
         evt = window.event;
@@ -40,19 +39,10 @@ function getEvt(evt){
     xPos = evt.clientX;
     yPos = evt.clientY;
     
+    window.requestAnimationFrame(moveEyes);
 }
 
 function moveEyes(){
-    var distance = Math.sqrt(Math.pow(xPos - leftEye.offsetLeft, 2) + Math.pow(yPos - leftEye.offsetTop, 2));
-    
-    var xSpeed = Math.abs(xPos - leftEye.offsetLeft)/distance;
-    var ySpeed = Math.abs(yPos - leftEye.offsetTop)/distance;
-    
-    var leftEyeLeftDist = parseFloat(leftEye.style.left);
-    
-    leftEye.style.left = leftEyeLeftDist + (xSpeed * lerpSpeed * (xPos - leftEyeLeftDist)) + "px";
-    leftEye.style.top = leftEye.offsetTop + (ySpeed * lerpSpeed * (yPos - leftEye.offsetTop)) + "px";
-    
-    //console.log();
-    window.requestAnimationFrame(moveEyes);
+    console.log(lerpSpeed*(xPos-leftEye.offsetLeft));
+    leftEye.style.left = leftEye.offsetLeft +(lerpSpeed*(xPos-leftEye.offsetLeft)) + "px";        window.requestAnimationFrame(moveEyes);
 }
