@@ -43,16 +43,32 @@ function getEvt(evt){
 }
 
 function moveEyes(){
-    var distance = Math.sqrt(Math.pow(xPos - leftEye.offsetLeft, 2) + Math.pow(yPos - leftEye.offsetTop, 2));
-    
-    var xSpeed = Math.abs(xPos - leftEye.offsetLeft)/distance;
-    var ySpeed = Math.abs(yPos - leftEye.offsetTop)/distance;
-    
+   
     var leftEyeLeftDist = parseFloat(leftEye.style.left);
+    var leftEyeTopDist = parseFloat(leftEye.style.top);
+    var leftOffset = - (eyeSize + eyeSize/2)
     
-    leftEye.style.left = leftEyeLeftDist + (xSpeed * lerpSpeed * (xPos - leftEyeLeftDist)) + "px";
-    leftEye.style.top = leftEye.offsetTop + (ySpeed * lerpSpeed * (yPos - leftEye.offsetTop)) + "px";
+    var topBottom = yPos - leftEyeTopDist;
+    if(topBottom < 0){
+        topBottom = 10;
+    }
+    else{
+        topBottom = -10;
+    }
     
-    //console.log();
+    var distance = Math.sqrt(Math.pow(xPos + leftOffset - leftEyeLeftDist, 2) + Math.pow(yPos + topBottom - leftEyeTopDist, 2));
+    var xSpeed = Math.abs(xPos + leftOffset - leftEyeLeftDist)/distance;
+    var ySpeed = Math.abs(yPos + topBottom - leftEyeTopDist)/distance;
+    
+    leftEye.style.left = leftEyeLeftDist + (xSpeed * lerpSpeed * (xPos + leftOffset - leftEyeLeftDist)) + "px";
+    leftEye.style.top = leftEyeTopDist + (ySpeed * lerpSpeed * (yPos + topBottom - leftEyeTopDist)) + "px";
+    
+    rightEye.style.left = parseFloat(leftEye.style.left) + 2 * eyeSize + "px";
+    rightEye.style.top = parseFloat(leftEye.style.top) + "px";
+    
+    console.log(xSpeed * lerpSpeed * (xPos - (eyeSize + eyeSize/2) - leftEyeLeftDist));
+    
+    
+    
     window.requestAnimationFrame(moveEyes);
 }
