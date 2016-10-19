@@ -8,12 +8,17 @@ var rightEye;
 var xDormant= true;
 var lerpSpeed = 0.05;
 var eyeSize = 6;
-var xOffset = 0;
-var xPos;
-var yPos;
+var eyeballSize = 1;
+var following = false;
+var xPos = 0;
+var yPos = 0;
+var eyeballCen = 0;
+
 function init(){
     leftEye = document.getElementById("lOEye");
     rightEye = document.getElementById("rOEye");
+    leftEyeball = document.getElementById("lIEye");
+    rightEyeball = document.getElementById("rIEye");
     
     //size of outer eyes
     leftEye.style.height = eyeSize + "px";
@@ -21,18 +26,33 @@ function init(){
     rightEye.style.height = eyeSize + "px";
     rightEye.style.width = eyeSize + "px";
     
+    //size of eyeballs
+    leftEyeball.height = eyeballSize + "px";
+    leftEyeball.width = eyeballSize + "px";
+    rightEyeball.height = eyeballSize + "px";
+    rightEyeball.width = eyeballSize + "px";
+    
     //begining positions of the eyes
     leftEye.style.left = window.innerWidth/2 - eyeSize - eyeSize/2 + "px";
-    rightEye.style.left = window.innerWidth/2 + eyeSize/2 +"px";
+    rightEye.style.left = window.innerWidth/2 + eyeSize/2 + "px";
     leftEye.style.top = window.innerHeight/2 + eyeSize/2 + "px"; 
-    rightEye.style.top = window.innerHeight/2 + eyeSize/2 + "px"; 
+    rightEye.style.top = window.innerHeight/2 + eyeSize/2 + "px";    
+    
+    //begining positions of the eyeblls
+    eyeballCen = eyeSize/2 - eyeballSize;
+    leftEyeball.style.left = eyeballCen + "px";
+    leftEyeball.style.top = eyeballCen + "px";
+    rightEyeball.style.left = eyeballCen + "px";
+    rightEyeball.style.top = eyeballCen + "px";
 }
 
-function getEvt(evt){
-    if(!xOffset){
+function getEvt(evt){ 
+    
+    if(!following){
         window.requestAnimationFrame(moveEyes);
-        xOffset = 1;
+        following = true;
     }
+    
     if (!evt){
         evt = window.event;
     }
@@ -43,7 +63,6 @@ function getEvt(evt){
 }
 
 function moveEyes(){
-   
     var leftEyeLeftDist = parseFloat(leftEye.style.left);
     var leftEyeTopDist = parseFloat(leftEye.style.top);
     var leftOffset = - (eyeSize + eyeSize/2)
@@ -57,8 +76,10 @@ function moveEyes(){
     }
     
     var distance = Math.sqrt(Math.pow(xPos + leftOffset - leftEyeLeftDist, 2) + Math.pow(yPos + topBottom - leftEyeTopDist, 2));
-    var xSpeed = Math.abs(xPos + leftOffset - leftEyeLeftDist)/distance;
-    var ySpeed = Math.abs(yPos + topBottom - leftEyeTopDist)/distance;
+    var xNorm = (xPos + leftOffset - leftEyeLeftDist)/distance;
+    var yNorm = (yPos + topBottom - leftEyeTopDist)/distance;
+    var xSpeed = Math.abs(xNorm);
+    var ySpeed = Math.abs(yNorm);
     
     leftEye.style.left = leftEyeLeftDist + (xSpeed * lerpSpeed * (xPos + leftOffset - leftEyeLeftDist)) + "px";
     leftEye.style.top = leftEyeTopDist + (ySpeed * lerpSpeed * (yPos + topBottom - leftEyeTopDist)) + "px";
@@ -66,9 +87,18 @@ function moveEyes(){
     rightEye.style.left = parseFloat(leftEye.style.left) + 2 * eyeSize + "px";
     rightEye.style.top = parseFloat(leftEye.style.top) + "px";
     
-    console.log(xSpeed * lerpSpeed * (xPos - (eyeSize + eyeSize/2) - leftEyeLeftDist));
+    moveEyeballs();
     
-    
+    function moveEyeballs(){
+        
+        var eyeballDist = Math.sqrt(Math.pow(xPos + leftOffset - leftEyeLeftDist, 2) + Math.pow(yPos - leftEyeTopDist, 2));
+        var xEBNorm = (xPos + leftOffset - leftEyeLeftDist)/eyeballDist;
+        var yEBNorm = (yPos - leftEyeTopDist)/eyeballDist;
+        leftEyeball.style.left = eyeballCen + 2 * xEBNorm + "px";
+        leftEyeball.style.top = eyeballCen + 2 * yEBNorm + "px";
+        rightEyeball.style.left = eyeballCen + 2 * xEBNorm + "px";
+        rightEyeball.style.top = eyeballCen + 2 * yEBNorm + "px";
+    }
     
     window.requestAnimationFrame(moveEyes);
 }
