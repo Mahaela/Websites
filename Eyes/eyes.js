@@ -7,8 +7,8 @@ var leftEye;
 var rightEye;
 var xDormant= true;
 var lerpSpeed = 0.05;
-var eyeSize = 6;
-var eyeballSize = 1;
+var eyeSize = 30;
+var eyeballSize = 4;
 var following = false;
 var xPos = 0;
 var yPos = 0;
@@ -27,10 +27,10 @@ function init(){
     rightEye.style.width = eyeSize + "px";
     
     //size of eyeballs
-    leftEyeball.height = eyeballSize + "px";
-    leftEyeball.width = eyeballSize + "px";
-    rightEyeball.height = eyeballSize + "px";
-    rightEyeball.width = eyeballSize + "px";
+    leftEyeball.style.height = eyeballSize + "px";
+    leftEyeball.style.width = eyeballSize + "px";
+    rightEyeball.style.height = eyeballSize + "px";
+    rightEyeball.style.width = eyeballSize + "px";
     
     //begining positions of the eyes
     leftEye.style.left = window.innerWidth/2 - eyeSize - eyeSize/2 + "px";
@@ -69,10 +69,10 @@ function moveEyes(){
     
     var topBottom = yPos - leftEyeTopDist;
     if(topBottom < 0){
-        topBottom = 10;
+        topBottom = 50;
     }
     else{
-        topBottom = -10;
+        topBottom = -80;
     }
     
     var distance = Math.sqrt(Math.pow(xPos + leftOffset - leftEyeLeftDist, 2) + Math.pow(yPos + topBottom - leftEyeTopDist, 2));
@@ -86,18 +86,18 @@ function moveEyes(){
     
     rightEye.style.left = parseFloat(leftEye.style.left) + 2 * eyeSize + "px";
     rightEye.style.top = parseFloat(leftEye.style.top) + "px";
-    
+  
     moveEyeballs();
-    
+  
     function moveEyeballs(){
-        
         var eyeballDist = Math.sqrt(Math.pow(xPos + leftOffset - leftEyeLeftDist, 2) + Math.pow(yPos - leftEyeTopDist, 2));
         var xEBNorm = (xPos + leftOffset - leftEyeLeftDist)/eyeballDist;
         var yEBNorm = (yPos - leftEyeTopDist)/eyeballDist;
-        leftEyeball.style.left = eyeballCen + 2 * xEBNorm + "px";
-        leftEyeball.style.top = eyeballCen + 2 * yEBNorm + "px";
-        rightEyeball.style.left = eyeballCen + 2 * xEBNorm + "px";
-        rightEyeball.style.top = eyeballCen + 2 * yEBNorm + "px";
+      
+        leftEyeball.style.left = eyeballCen + (eyeSize/2 - eyeballSize/2) * xEBNorm + "px";
+        leftEyeball.style.top = eyeballCen  + (eyeSize/2 - eyeballSize/2) * yEBNorm + "px";
+        rightEyeball.style.left = eyeballCen + (eyeSize/2 - eyeballSize/2) * xEBNorm + "px";
+        rightEyeball.style.top = eyeballCen + (eyeSize/2 - eyeballSize/2) * yEBNorm + "px";
     }
     
     window.requestAnimationFrame(moveEyes);

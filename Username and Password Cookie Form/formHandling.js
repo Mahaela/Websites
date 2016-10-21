@@ -2,11 +2,14 @@ window.onload = init;
 
 function init(){
     for(var i=0; i<document.forms.length; i++){
-        document.forms[i].onsubmit = function(){return validForm();} 
+        document.forms[i].onsubmit = function(){return validFormCookies();} 
     }
+    
+    loadCookies();
 }
 
-function validForm(){
+function validFormCookies(){
+    
     var allGood = true;
     var allTags = document.getElementsByTagName("*");
     for(var i = 0; i < allTags.length; i++){
@@ -19,7 +22,17 @@ function validForm(){
     if(!passwordsMatch()){
         allGood = false;
     }
+    
+    //save username in a cookie
+    
+    var expireDate = new Date();
+    expireDate.setMonth(expireDate.getMonth() + 3);
+    
+    document.cookie = "userName=" + document.getElementById("userName").value
+       +";expires=" + expireDate.toGMTString();
+    
     return allGood;
+   
 }
 function checkRequiredFields(thisTag){      
     if(thisTag.value == ""){
@@ -51,5 +64,16 @@ function passwordsMatch(){
     }
 }
 
+
+function loadCookies(){
+    if(document.cookie != ""){
+        var cookies = document.cookie.split("; ");
+        for(var i=0; i < cookies.length; ++i){
+            if(cookies[i].indexOf("userName") > -1){
+                document.getElementById("userName").value = cookies[i].split("=")[1];
+            }
+        }
+    }
+}
     
     
