@@ -1,0 +1,16 @@
+{{stringIntrop}} | {{numIntrop}}
+
+<input type="text" value="{{stringIntrop}}" /><br />
+
+<input type="text" [value]= "stringIntrop" /> <br />
+
+<!--creates a class and binds it to the a property, red border is the name of
+    the class and true is the boolean for attatching the class to the property,
+    But it can also be a function like test(), so that you can write multiline code
+    Check the css file for the class -->
+<p [ngClass]="{redBorder: true}">Is this styled</p><br />
+<p [ngStyle]="{color: 'green'}">Is this styled</p><br />
+<h3>Custom property binding</h3>
+<fa-property-binding [result] ="10"></fa-property-binding>
+<fa-event-binding (clicked)="clickeroo($event)"></fa-event-binding>
+<fa-two-way-databinding></fa-two-way-databinding>
