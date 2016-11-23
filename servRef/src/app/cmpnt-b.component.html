@@ -1,0 +1,19 @@
+ <div>
+      <!--@input get a reference to the input element -->
+      <input type="text" #input/>
+      <button (click)="onLog(input.value)">Log</button>
+      <button (click)="onSend(input.value)">Send</button>
+     
+  </div>
+    <hr />
+    <div>
+        <button (click)="onGet()">Refresh Storage</button>
+        <h3>Storage</h3>
+        <ul>
+            <li *ngFor ="let item of items">{{item}}</li>
+        </ul>
+        <h3>Recieved Value</h3>
+        <p>{{value}}</p>
+
+    </div>
+    
