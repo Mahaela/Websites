@@ -15,7 +15,7 @@ export class UserComponent implements OnDestroy {
        this.subscription = activatedRoute.params.subscribe((param: any) => this.id = param['id']);
     }
     onNavigate() {
-        this.router.navigate(['/'], { queryParams: { 'analytics': 100 } });
+        this.router.navigate(['/'], { queryParams: { 'analytics': 100 }, fragment: 'section1', preserveQueryParams: true});
     }
 
     ngOnDestroy() {
