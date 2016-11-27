@@ -7,12 +7,17 @@ import { AppComponent } from './app.component';
 import { HomeComponentComponent } from './home-component.component';
 import { UserComponent } from './user/user.component';
 import { routing } from './app.routing.ts';
+import { UserEditComponent } from './user/user-edit.component';
+import { UserDetailComponent } from './user/user-detail.component';
+import { UserDetailGuard } from './user/user.detail.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponentComponent,
-    UserComponent
+    UserComponent,
+    UserEditComponent,
+    UserDetailComponent
   ],
   imports: [
       BrowserModule,
@@ -20,7 +25,7 @@ import { routing } from './app.routing.ts';
       HttpModule,
       routing
   ],
-  providers: [],
+  providers: [UserDetailGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
